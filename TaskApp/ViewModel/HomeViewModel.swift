@@ -11,18 +11,16 @@ import CoreData
 class HomeViewModel: ObservableObject {
     @Published var content = ""
     @Published var date = Date()
-    
     @Published var isNewDate = false
-    
     @Published var updateItem : Task!
     
-    let calender = Calendar.current
+    let calendar = Calendar.current
     
     func checkDate() -> String {
-        if calender.isDateInToday(date) {
+        if calendar.isDateInToday(date) {
             return "Today"
         } else
-        if calender.isDateInTomorrow(date) {
+        if calendar.isDateInTomorrow(date) {
             return "Tomorrow"
         } else {
             return "Other day"
@@ -31,7 +29,7 @@ class HomeViewModel: ObservableObject {
     
     func updateDate(value: String) {
         if value == "Today" {date = Date()}
-        else if value == "Tomorrow" {date = calender.date(byAdding: .day, value: 1, to: Date())! }
+        else if value == "Tomorrow" {date = calendar.date(byAdding: .day, value: 1, to: Date())! }
     }
     
     func writeData(context: NSManagedObjectContext) {
@@ -66,6 +64,5 @@ class HomeViewModel: ObservableObject {
         date = item.date!
         content = item.content!
         isNewDate.toggle()
-        
     }
 }

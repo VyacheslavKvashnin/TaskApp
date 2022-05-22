@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct Home: View {
-    @StateObject var homeData = HomeViewModel()
+    @StateObject private var homeData = HomeViewModel()
     @FetchRequest(entity: Task.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: true)], animation: .spring()) var results: FetchedResults<Task>
     @Environment(\.managedObjectContext) var context
     

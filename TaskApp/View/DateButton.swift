@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DateButton: View {
-    var title: String
+    let title: String
     @ObservedObject var homeData : HomeViewModel
     
     var body: some View {
